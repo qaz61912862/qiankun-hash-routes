@@ -12,17 +12,13 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+const isDev = process.env.NODE_ENV === 'development'
+
 startQiankun([
   {
     name: 'vue-hash',
-    entry: '//localhost:8081',
+    entry: isDev ? '//localhost:8081' : '/test/sub1/index.html',
     container: '#subContainer',
-    activeRule: '/vue-hash',
-  },
-  {
-    name: 'vue-history',
-    entry: '//localhost:8082',
-    container: '#subContainer',
-    activeRule: '/vue-history',
+    activeRule: isDev ? '#/vue-hash' : '/test/main/#/vue-hash/',
   }
 ])

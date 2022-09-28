@@ -1,7 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 const { name } = require('./package')
 
-const port = 8082
+const port = 8081
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -17,7 +17,8 @@ module.exports = defineConfig({
     output: {
       library: `${name}-[name]`,
       libraryTarget: 'umd',
-      chunkLoadingGlobal: `webpackJsonp_${name}`
+      chunkLoadingGlobal: `webpackJsonp_${name}`,
+      globalObject: 'window'
     }
   }
 })
